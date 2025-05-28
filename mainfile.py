@@ -37,8 +37,46 @@ def checkpalindrome(s):
     return k
             
         
+def summingnumber(s):   
+    if len(s)<=1:
+        totalsum=s[0]
+        return totalsum
+   
+    else:
+        totalsum=s[0]+summingnumber(s[1:])
+        return totalsum
         
-
     
-l=checkpalindrome('naman')
-print(l)
+
+def findtriangularnumber(n): 
+    if n==1:
+        return n
+    else:
+        return n+findtriangularnumber(n-1)
+    
+    
+def findingpermutations(string):
+    anagrams=[]
+    print('entering ',string)
+    if len(string)<=1:
+        return string
+    elif len(string)==2:
+        anagrams.append(string)
+        anagrams.append(string[1]+string[0])
+        return anagrams
+    else:
+     for s in string:
+        
+        remaining_elements = [c for c in string if c !=s]
+        remaining_elements=''.join(remaining_elements)
+        for a in findingpermutations(remaining_elements):
+            anagrams.append(a+s)
+           # anagrams.append(s+a)
+        print('leaving',string)
+     return anagrams
+        
+        
+        
+    
+a=findingpermutations('abc')
+print(a)
